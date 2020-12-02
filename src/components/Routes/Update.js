@@ -4,11 +4,11 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import Layout from '../Layout'
+// import Layout from '../Layout'
 import messages from '../AutoDismissAlert/messages'
 
 const BusinessEdit = props => {
-  const [business, setBusiness] = useState({ name: '', dob: '', item: '', price: '', location: '' })
+  const [business, setBusiness] = useState({ name: '', address: '', phone: '' })
   const [updated, setUpdated] = useState(false)
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const BusinessEdit = props => {
   const { name, address, phone } = business
 
   return (
-    <Layout>
+    <React.Fragment>
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
           <h3> Edit Business</h3>
@@ -83,7 +83,7 @@ const BusinessEdit = props => {
               <Form.Control
                 required
                 type="text"
-                name="adress"
+                name="address"
                 value={address}
                 placeholder="Address"
                 onChange={handleChange}
@@ -108,7 +108,7 @@ const BusinessEdit = props => {
           </Form>
         </div>
       </div>
-    </Layout>
+    </React.Fragment>
   )
 }
 

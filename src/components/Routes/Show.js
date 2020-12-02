@@ -64,11 +64,11 @@ const Business = props => {
       <h4>{business.name}</h4>
       <p>Birthday: { business.address }</p>
       <p>Item: {business.phone}</p>
-      <button onClick={destroy}>Remove Gift</button>
+      <button onClick={destroy}>Remove Business</button>
       <Link to={`/businesses/${props.match.params.id}/edit`}>
         <button>Edit</button>
       </Link>
-      <Link to="/businesses">Back to Your Wish List</Link>
+      <Link to="/businesses">Back to you business</Link>
     </React.Fragment>
   )
 }

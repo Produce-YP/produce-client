@@ -8,7 +8,7 @@ import messages from '../AutoDismissAlert/messages'
 
 const BusinessCreate = props => {
   const [createdBusinessId, setCreatedBusinessId] = useState(null)
-  const [business, setBusiness] = useState({ name: '', dob: '', item: '', price: '', location: '' })
+  const [business, setBusiness] = useState({ name: '', address: '', phone: '' })
 
   const handleChange = event => {
     event.persist()
@@ -25,12 +25,12 @@ const BusinessCreate = props => {
     axios({
       url: `${apiUrl}/businesses`,
       method: 'POST',
-      data: { wishlist: business },
+      data: { business: business },
       headers: {
         'Authorization': `Token token=${props.user.token}`
       }
     })
-      .then(res => setCreatedBusinessId(res.data.wishlist._id))
+      .then(res => setCreatedBusinessId(res.data.business._id))
       .then(() => msgAlert({
         heading: 'Looking 100',
         message: messages.businessCreateSuccess,
@@ -53,21 +53,21 @@ const BusinessCreate = props => {
     <React.Fragment>
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3> Create Wish List</h3>
+          <h3> Add Business </h3>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="name">
-              <Form.Label>Gift Name</Form.Label>
+              <Form.Label>Business Name</Form.Label>
               <Form.Control
                 required
                 type="text"
                 name="name"
                 value={name}
-                placeholder="Enter Person's Name"
+                placeholder="Business Name"
                 onChange={handleChange}
               />
             </Form.Group>
             <Form.Group controlId="addres">
-              <Form.Label>Birthday</Form.Label>
+              <Form.Label>Business Address</Form.Label>
               <Form.Control
                 required
                 type="text"
@@ -78,13 +78,13 @@ const BusinessCreate = props => {
               />
             </Form.Group>
             <Form.Group controlId="Phone">
-              <Form.Label>Gift Name</Form.Label>
+              <Form.Label>Phone</Form.Label>
               <Form.Control
                 required
                 type="text"
                 name="phone"
                 value={phone}
-                placeholder="What do you want to get them?"
+                placeholder="Business Number"
                 onChange={handleChange}
               />
             </Form.Group>
