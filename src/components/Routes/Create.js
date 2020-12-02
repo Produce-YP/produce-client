@@ -8,7 +8,7 @@ import messages from '../AutoDismissAlert/messages'
 
 const BusinessCreate = props => {
   const [createdBusinessId, setCreatedBusinessId] = useState(null)
-  const [wishList, setBusiness] = useState({ name: '', dob: '', item: '', price: '', location: '' })
+  const [business, setBusiness] = useState({ name: '', dob: '', item: '', price: '', location: '' })
 
   const handleChange = event => {
     event.persist()
@@ -23,9 +23,9 @@ const BusinessCreate = props => {
     event.preventDefault()
     const { msgAlert } = props
     axios({
-      url: `${apiUrl}/wishlists`,
+      url: `${apiUrl}/businesses`,
       method: 'POST',
-      data: { wishlist: wishList },
+      data: { wishlist: business },
       headers: {
         'Authorization': `Token token=${props.user.token}`
       }
@@ -33,21 +33,21 @@ const BusinessCreate = props => {
       .then(res => setCreatedBusinessId(res.data.wishlist._id))
       .then(() => msgAlert({
         heading: 'Looking 100',
-        message: messages.wishListCreateSuccess,
+        message: messages.businessCreateSuccess,
         variant: 'Looking Good!'
       }))
       .catch(console.error)
       .catch(() => msgAlert({
         heading: 'Sorry 5000 Try Again',
-        message: messages.wishListCreateFailure,
+        message: messages.businessCreateFailure,
         variant: ':\'('
       }))
   }
   if (createdBusinessId) {
-    return <Redirect to={`/wishlists/${createdBusinessId}`} />
+    return <Redirect to={`/businesses/${createdBusinessId}`} />
   }
 
-  const { name, dob, item, price, location } = wishList
+  const { name, address, phone } = business
 
   return (
     <React.Fragment>
@@ -66,47 +66,25 @@ const BusinessCreate = props => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="dob">
+            <Form.Group controlId="addres">
               <Form.Label>Birthday</Form.Label>
               <Form.Control
                 required
                 type="text"
-                name="dob"
-                value={dob}
-                placeholder="Date of Birth"
+                name="address"
+                value={address}
+                placeholder="Address"
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="item">
+            <Form.Group controlId="Phone">
               <Form.Label>Gift Name</Form.Label>
               <Form.Control
                 required
                 type="text"
-                name="item"
-                value={item}
+                name="phone"
+                value={phone}
                 placeholder="What do you want to get them?"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="price">
-              <Form.Label>Price</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="price"
-                value={price}
-                placeholder="How Much?"
-                onChange={handleChange}
-              />
-            </Form.Group>
-            <Form.Group controlId="location">
-              <Form.Label>Location</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="location"
-                value={location}
-                placeholder="Where is it? Website or Store?"
                 onChange={handleChange}
               />
             </Form.Group>

@@ -4,17 +4,17 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import messages from '../AutoDismissAlert/messages'
 
-const WishLists = props => {
-  const [wishLists, setWishList] = useState([])
+const Businesses = props => {
+  const [businesses, setBusiness] = useState([])
 
   useEffect(() => {
     const { msgAlert } = props
-    axios(`${apiUrl}/wishlists/`, {
+    axios(`${apiUrl}/businesses/`, {
       headers: {
         'Authorization': `Token token=${props.user.token}`
       }
     })
-      .then(res => setWishList(res.data.wishlists))
+      .then(res => setBusiness(res.data.businesses))
       .then(() => msgAlert({
         heading: 'Gift List',
         message: messages.indexSuccess,
@@ -27,19 +27,19 @@ const WishLists = props => {
         variant: 'Your list didn\'t load try again'
       }))
   }, [])
-  const wishList = wishLists.map(wishList => (
-    <li key={wishList._id}>
-      <Link to={`/wishlists/${wishList._id}`}>{wishList.name}</Link>
+  const business = businesses.map(business => (
+    <li key={business._id}>
+      <Link to={`/businesses/${business._id}`}>{business.name}</Link>
     </li>
   ))
   return (
     <React.Fragment>
-      <h4>Wish List</h4>
+      <h4>Businesses</h4>
       <ul>
-        {wishList}
+        {business}
       </ul>
     </React.Fragment>
   )
 }
 
-export default WishLists
+export default Businesses

@@ -65,7 +65,7 @@ const BusinessEdit = props => {
     <Layout>
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3> Edit Wish List</h3>
+          <h3> Edit Business</h3>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="name">
               <Form.Label>Business Name</Form.Label>

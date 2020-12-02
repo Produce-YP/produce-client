@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -9,6 +9,9 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import BusinessCreate from '../Routes/Create'
+import Businesses from '../Routes/Index'
+import Business from '../Routes/Show'
+import BusinessEdit from '../Routes/Update'
 
 class App extends Component {
   constructor () {
@@ -58,10 +61,19 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/business-create' render={() => (
             <BusinessCreate msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/businesses' render={() => (
+            <Businesses msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/businesses/:id/edit' render={(navProps) => (
+            <BusinessEdit {...navProps} msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/businesses/:id' render={(navProps) => (
+            <Business {...navProps} msgAlert={this.msgAlert} user={user} />
+          )} />
         </main>
       </Fragment>
     )
   }
 }
 
-export default App
+export default withRouter(App)
