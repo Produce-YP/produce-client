@@ -12,6 +12,7 @@ import BusinessCreate from '../Routes/Create'
 import Businesses from '../Routes/Index'
 import Business from '../Routes/Show'
 import BusinessEdit from '../Routes/Update'
+import Home from '../Home/Home'
 
 class App extends Component {
   constructor () {
@@ -45,7 +46,7 @@ class App extends Component {
             message={msgAlert.message}
           />
         ))}
-        <main className="container">
+        <main>
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -69,6 +70,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/businesses/:id' render={(navProps) => (
             <Business {...navProps} msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/' render={() => (
+            <Home msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
