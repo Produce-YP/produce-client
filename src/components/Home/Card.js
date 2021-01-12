@@ -1,17 +1,16 @@
 import React from 'react'
+
 import './main.css'
 
-function Card () {
+function Card ({ business }) {
   return (
     <div className="content-container">
       <div className="image">Image container</div>
       <div className="content-info">
-        <h3>Name</h3>
-        <h5>* * * * *</h5>
-        <h6>Subtitle</h6>
-        <p>a.fnsdlajgnsdjnbsvsdf. adsfsdgbsldjgbsdfasv sdjgnsvsd.dfsjbsvfkjbvsfd
-        sdfgsdbgskjsjgns,vns,vms
-        </p>
+        <h3>{business.name}</h3>
+        <h3>{business.address}</h3>
+        <h3>{business.phone}</h3>
+        <p>more info about stuff and things related to company blah blah</p>
       </div>
     </div>
   )

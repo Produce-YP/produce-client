@@ -4,7 +4,7 @@ import Main from './Main'
 import Maps from './Maps'
 import './home.css'
 
-function Home () {
+function Home ({ businesses }) {
   return (
     <div className="home">
       <Sidebar />

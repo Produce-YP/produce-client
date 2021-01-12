@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import messages from '../AutoDismissAlert/messages'
+import Card from '../Home/Card'
 
 const Businesses = props => {
   const [businesses, setBusiness] = useState([])
@@ -27,17 +28,16 @@ const Businesses = props => {
         variant: 'Your list didn\'t load try again'
       }))
   }, [])
-  const business = businesses.map(business => (
-    <li key={business._id}>
-      <Link to={`/businesses/${business._id}`}>{business.name}</Link>
-    </li>
-  ))
+
   return (
     <React.Fragment>
-      <h4>Businesses</h4>
-      <ul>
-        {business}
-      </ul>
+      {businesses.map(business => (
+        <div key={business._id}>
+          <Link to={`/businesses/${business._id}`}>
+            <Card business={business}/>
+          </Link>
+        </div>
+      ))}
     </React.Fragment>
   )
 }
