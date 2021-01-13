@@ -1,0 +1,12 @@
+.maps {
+    display: flex;
+    height: 100%;
+    width: 25%;
+
+}
+
+
+.map-container {
+    height: 100%;
+    width: 100px;
+}

@@ -1,0 +1,38 @@
+.main-feed {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    width: 50%;
+    border: 1px solid lightgray;
+}
+
+.content-container {
+    width: 500px;
+    height: 200px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+    margin-top: 25px;
+    transition: ease-in-out 0.5;
+    display: flex;
+    align-items: center;
+}
+
+.content-container:hover {
+    box-shadow: 3px -7px 40px -1px rgba(0,0,0,0.75);
+    left: 3px;
+}
+
+.image {
+    height: 150px;
+    width: 50%;
+    border: 3px solid red;
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.content-info {
+    margin-left: 10px;
+}
