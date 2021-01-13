@@ -1,6 +1,5 @@
 import React from 'react'
 import './main.css'
-import Card from './Card'
 
 function BusinessPage () {
   return (

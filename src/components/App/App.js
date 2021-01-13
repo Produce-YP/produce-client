@@ -13,7 +13,6 @@ import Businesses from '../Routes/Index'
 import Business from '../Routes/Show'
 import BusinessEdit from '../Routes/Update'
 import Home from '../Home/Home'
-console.log(process.env.mapAPI_KEY)
 
 class App extends Component {
   constructor () {

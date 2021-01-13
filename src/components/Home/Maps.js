@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './maps.css'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import Geocode from 'react-geocode'
+const REACT_APP_GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY
+console.log('!!!', process.env)
 
 const mapStyles = {
   width: '100%',
@@ -9,20 +11,30 @@ const mapStyles = {
 }
 
 export class Maps extends Component {
-  render () {
+  constructor (props) {
+    super(props)
+    this.state = {
+      lat: 0,
+      lng: 0
+    }
+  }
+
+  componentDidMount () {
     const { address } = this.props
-    console.log('this is address', address)
-    Geocode.setApiKey('')
+    Geocode.setApiKey(REACT_APP_GOOGLE_KEY)
     Geocode.fromAddress(address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location
+        this.setState({ lat, lng })
         console.log('geocoded', lat, lng)
       },
       error => {
         console.error(error)
       }
     )
-    console.log('!!!', address)
+  }
+
+  render () {
     return (
       <div className="maps">
         <Map
@@ -38,7 +50,7 @@ export class Maps extends Component {
         >
           <Marker
             name={'Santa Monica'}
-            position={{ lat: 34.0982287, lng: -118.3416747 }}
+            position={{ lat: this.state.lat, lng: this.state.lng }}
           />
         </Map>
       </div>
@@ -47,5 +59,5 @@ export class Maps extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ''
+  apiKey: REACT_APP_GOOGLE_KEY
 })(Maps)
