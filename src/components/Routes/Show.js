@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import messages from '../AutoDismissAlert/messages'
+import Maps from '../Home/Maps'
 
 const Business = props => {
   const [business, setbusiness] = useState(null)
@@ -62,13 +63,16 @@ const Business = props => {
   return (
     <React.Fragment>
       <h4>{business.name}</h4>
-      <p>Birthday: { business.address }</p>
+      <p>Address: { business.address }</p>
       <p>Item: {business.phone}</p>
       <button onClick={destroy}>Remove Business</button>
       <Link to={`/businesses/${props.match.params.id}/edit`}>
         <button>Edit</button>
       </Link>
-      <Link to="/businesses">Back to you business</Link>
+      <Link to="/">Back to you business</Link>
+      <div>
+        <Maps />
+      </div>
     </React.Fragment>
   )
 }

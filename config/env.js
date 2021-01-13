@@ -1,5 +1,4 @@
 'use strict'
-
 const fs = require('fs')
 const path = require('path')
 const paths = require('./paths')
@@ -39,7 +38,6 @@ dotenvFiles.forEach(dotenvFile => {
     )
   }
 })
-
 // We support resolving modules according to `NODE_PATH`.
 // This lets you use absolute paths in imports inside large monorepos:
 // https://github.com/facebookincubator/create-react-app/issues/253.

@@ -13,6 +13,7 @@ import Businesses from '../Routes/Index'
 import Business from '../Routes/Show'
 import BusinessEdit from '../Routes/Update'
 import Home from '../Home/Home'
+console.log(process.env.mapAPI_KEY)
 
 class App extends Component {
   constructor () {
@@ -72,7 +73,7 @@ class App extends Component {
             <Business {...navProps} msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/' render={() => (
-            <Home msgAlert={this.msgAlert} user={user} />
+            <Home msgAlert={this.msgAlert} user={user}/>
           )} />
         </main>
       </Fragment>

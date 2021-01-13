@@ -10,8 +10,8 @@
 }
 
 .content-container {
-    width: 75%;
-    height: 25%;
+    width: 500px;
+    height: 200px;
     border: 1px solid lightgray;
     border-radius: 3px;
     margin-top: 25px;
