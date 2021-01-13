@@ -12,7 +12,7 @@ export class Maps extends Component {
   render () {
     const { address } = this.props
     console.log('this is address', address)
-    Geocode.setApiKey('AIzaSyDpcyCX3CmMaBK8DypyIAOi0fJh4dIEwVI')
+    Geocode.setApiKey('')
     Geocode.fromAddress(address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location
@@ -47,5 +47,5 @@ export class Maps extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyDpcyCX3CmMaBK8DypyIAOi0fJh4dIEwVI'
+  apiKey: ''
 })(Maps)
