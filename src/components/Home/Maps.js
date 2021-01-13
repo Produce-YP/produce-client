@@ -3,7 +3,6 @@ import './maps.css'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
 import Geocode from 'react-geocode'
 const REACT_APP_GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY
-console.log('!!!', process.env)
 
 const mapStyles = {
   width: '100%',
@@ -26,7 +25,6 @@ export class Maps extends Component {
       response => {
         const { lat, lng } = response.results[0].geometry.location
         this.setState({ lat, lng })
-        console.log('geocoded', lat, lng)
       },
       error => {
         console.error(error)
