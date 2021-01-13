@@ -71,7 +71,7 @@ const Business = props => {
       </Link>
       <Link to="/">Back to you business</Link>
       <div>
-        <Maps />
+        <Maps address={business.address}/>
       </div>
     </React.Fragment>
   )

@@ -8,20 +8,21 @@ const mapStyles = {
   height: '100%'
 }
 
-Geocode.fromAddress('7009 Sunset Blvd, Hollywood, CA 90028').then(
-  response => {
-    const { lat, lng } = response.results[0].geometry.location
-    console.log(lat, lng)
-  },
-  error => {
-    console.error(error)
-  }
-)
-
-// const myLatLng = { lat: 34.0522, lng: -118.2437 }
-
 export class Maps extends Component {
   render () {
+    const { address } = this.props
+    console.log('this is address', address)
+    Geocode.setApiKey('AIzaSyDpcyCX3CmMaBK8DypyIAOi0fJh4dIEwVI')
+    Geocode.fromAddress(address).then(
+      response => {
+        const { lat, lng } = response.results[0].geometry.location
+        console.log('geocoded', lat, lng)
+      },
+      error => {
+        console.error(error)
+      }
+    )
+    console.log('!!!', address)
     return (
       <div className="maps">
         <Map
@@ -37,7 +38,7 @@ export class Maps extends Component {
         >
           <Marker
             name={'Santa Monica'}
-            position={{ lat: 34.0195, lng: -118.4912 }}
+            position={{ lat: 34.0982287, lng: -118.3416747 }}
           />
         </Map>
       </div>
