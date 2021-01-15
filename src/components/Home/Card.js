@@ -7,9 +7,9 @@ function Card ({ business }) {
     <div className="content-container">
       <div className="image">Image container</div>
       <div className="content-info">
-        <h3>{business.name}</h3>
-        <h3>{business.address}</h3>
-        <h3>{business.phone}</h3>
+        <h4>{business.name}</h4>
+        <h4>{business.address}</h4>
+        <h4>{business.phone}</h4>
         <p>more info about stuff and things related to company blah blah</p>
       </div>
     </div>

@@ -5,8 +5,8 @@ import Geocode from 'react-geocode'
 const REACT_APP_GOOGLE_KEY = process.env.REACT_APP_GOOGLE_KEY
 
 const mapStyles = {
-  width: '100%',
-  height: '100%'
+  width: '500px',
+  height: '500px'
 }
 
 export class Maps extends Component {
@@ -37,7 +37,7 @@ export class Maps extends Component {
       <div className="maps">
         <Map
           google={this.props.google}
-          zoom={10}
+          zoom={18}
           style={mapStyles}
           initialCenter={
             {
