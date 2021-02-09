@@ -37,7 +37,7 @@ export class Maps extends Component {
       <div className="maps">
         <Map
           google={this.props.google}
-          zoom={18}
+          zoom={10}
           style={mapStyles}
           initialCenter={
             {
@@ -47,7 +47,6 @@ export class Maps extends Component {
           }
         >
           <Marker
-            name={'Santa Monica'}
             position={{ lat: this.state.lat, lng: this.state.lng }}
           />
         </Map>

@@ -52,7 +52,7 @@ const BusinessCreate = props => {
   return (
     <React.Fragment>
       <div className="row">
-        <div className="col-sm-10 col-md-8 mx-auto mt-5">
+        <div className="">
           <h3> Add Business </h3>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="name">
