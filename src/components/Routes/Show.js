@@ -4,6 +4,7 @@ import axios from 'axios'
 import apiUrl from '../../apiConfig'
 import messages from '../AutoDismissAlert/messages'
 import Maps from '../Home/Maps'
+import Comment from '../Home/Comment'
 
 const Business = props => {
   const [business, setbusiness] = useState(null)
@@ -61,7 +62,7 @@ const Business = props => {
     } />
   }
   return (
-    <React.Fragment>
+    <React.Fragment className="container">
       <h4>{business.name}</h4>
       <p>Address: { business.address }</p>
       <p>Item: {business.phone}</p>
@@ -70,6 +71,9 @@ const Business = props => {
         <button>Edit</button>
       </Link>
       <Link to="/">Back to you business</Link>
+      <div>
+        <Comment />
+      </div>
       <div>
         <Maps address={business.address}/>
       </div>
